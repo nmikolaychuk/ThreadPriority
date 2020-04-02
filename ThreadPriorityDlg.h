@@ -37,10 +37,14 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
+	
+	// функции/обработчики
 	afx_msg void OnBnClickedButtonStartStop();
 	afx_msg void OnBnClickedButtonExit();
-	afx_msg void OnNMCustomdrawSliderFirstThreadPriority(NMHDR* pNMHDR, LRESULT* pResult);
-	afx_msg void OnNMCustomdrawSliderSecondThreadPriority(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	afx_msg void OnBnClickedCheckFirstThreadSleep();
+	afx_msg void OnBnClickedCheckSecondThreadSleep();
 	
 	CSliderCtrl s_first_thread_priority;
 	CSliderCtrl s_second_thread_priority;
@@ -54,17 +58,13 @@ public:
 	static const int ThreadNumber = 2;		// число потоков
 	
 	HANDLE hThreadsCreated[ThreadNumber];		// созданные потоки
-	//vector<unsigned int> hThreadValue;
-
-	static const int first = 0;
-	static const int second = 1;
 
 	// смена имени кнопки Старт/Стоп
 	CButton StartStopButton;
 	BOOL bRunTh = false;
-
 	CString start = L"Запуск";
 	CString stop = L"Остановка";
-	afx_msg void OnTimer(UINT_PTR nIDEvent);
-	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+
+	BOOL CheckSleep1;
+	BOOL CheckSleep2;
 };

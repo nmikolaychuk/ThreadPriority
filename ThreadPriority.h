@@ -21,7 +21,6 @@ class CThreadPriorityApp : public CWinApp
 public:
 	CThreadPriorityApp();
 
-	std::vector <unsigned int> hThreadValue;
 // Переопределение
 public:
 	virtual BOOL InitInstance();
