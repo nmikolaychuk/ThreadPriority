@@ -46,25 +46,25 @@ public:
 	afx_msg void OnBnClickedCheckFirstThreadSleep();
 	afx_msg void OnBnClickedCheckSecondThreadSleep();
 	
-	CSliderCtrl s_first_thread_priority;
+	CSliderCtrl s_first_thread_priority;				// переменные, связанные с элементами диалога
 	CSliderCtrl s_second_thread_priority;
 	CProgressCtrl p_first_thread_capacity;
 	CProgressCtrl p_second_thread_capacity;
 	CString percent_of_first_thread_capacity;
 	CString percent_of_second_thread_capacity;
 
-	static DWORD WINAPI ThreadFunc(LPVOID pvParam);
+	static DWORD WINAPI ThreadFunc(LPVOID pvParam);		// функция потока
 
 	static const int ThreadNumber = 2;		// число потоков
 	
-	HANDLE hThreadsCreated[ThreadNumber];		// созданные потоки
+	HANDLE hThreadsCreated[ThreadNumber] = { 0, 0 };		// созданные потоки
 
 	// смена имени кнопки Старт/Стоп
-	CButton StartStopButton;
-	BOOL bRunTh = false;
-	CString start = L"Запуск";
+	CButton StartStopButton;		// переменная "управления" кнопкой <<Запуск>>
+	BOOL bRunTh = false;		// переменная, показывающая, запущен ли процесс
+	CString start = L"Запуск";		// строки с именем кнопки для каждого случая
 	CString stop = L"Остановка";
 
-	BOOL CheckSleep1;
+	BOOL CheckSleep1;		// переменные, связанные с чекпоинтами Sleep
 	BOOL CheckSleep2;
 };
